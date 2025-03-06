@@ -10,6 +10,7 @@ colorama==0.4.6
 kombu==5.4.2
 prompt_toolkit==3.0.50
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 redis==5.2.1
 six==1.17.0
 tzdata==2025.1
