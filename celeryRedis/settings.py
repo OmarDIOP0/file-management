@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from datetime import timedelta
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,11 +43,14 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -170,6 +174,65 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+#Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+#Simple Token
+SIMPLE_JWT = {
+    # Durée de vie de l'access token (50 minutes)
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=50),
+    # Durée de vie du refresh token (3 jours)
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
+    
+    # Sécurisation de la rotation des refresh tokens
+    "ROTATE_REFRESH_TOKENS": True,  # Activez la rotation des tokens de rafraîchissement
+    "BLACKLIST_AFTER_ROTATION": True,  # Les tokens de rafraîchissement sont mis en liste noire après utilisation
+
+    # Empêcher la mise à jour du login à chaque utilisation du token
+    "UPDATE_LAST_LOGIN": False,
+
+    # Sécuriser l'algorithme
+    "ALGORITHM": "HS256",  # Utilisation de HS256 pour une bonne balance entre performance et sécurité
+
+    # Variables facultatives de sécurité pour vérifier les tokens
+    "VERIFYING_KEY": "",  # Laissez vide si vous n'utilisez pas une clé publique externe pour vérifier les tokens
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "LEEWAY": 0,  # Ne pas permettre un écart de temps pour les tokens expirés
+
+    # Authentification via le header Bearer
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+
+    # Configuration des claims
+    "USER_ID_FIELD": "id",  # Utilisation de l'ID de l'utilisateur pour identifier
+    "USER_ID_CLAIM": "user_id",
+
+    # Configuration pour les tokens de type Access
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+
+    # Configuration des serializers
+    "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
+    "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
+    "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
+    "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
+}
+# Ajouter des configurations CORS pour autoriser uniquement certaines origines (à ajuster en fonction de vos besoins)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend en développement React
+    "localhost",  # URL de votre frontend en production
+]
+# Sécurisation de l'accès à l'API - Exemple de configuration CORS
+CORS_ALLOW_CREDENTIALS = True  # Autorise les cookies et l'authentification avec CORS
+CORS_ORIGIN_ALLOW_ALL = False  # Ne pas autoriser toutes les origines
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
