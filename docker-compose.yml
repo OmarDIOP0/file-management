@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    container_name: django_app
+    container_name: django_app-test
     command: /app/entrypoint.sh
     ports:
       - "8000:8000"
@@ -19,7 +19,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: postgres_db
+    container_name: postgres_db-test
     restart: always
     env_file:
       - .env
@@ -30,7 +30,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: pgadmin-test
     restart: always
     depends_on:
       - db
@@ -43,7 +43,7 @@ services:
 
   redis:
     image: "redis:alpine"
-    container_name: redis_server
+    container_name: redis_server-test
     restart: always
     ports:
       - "6379:6379"
@@ -52,7 +52,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    container_name: celery_worker
+    container_name: celery_worker-test
     command: celery -A celeryRedis worker --loglevel=info
     depends_on:
       - redis

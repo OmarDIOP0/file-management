@@ -1,8 +1,8 @@
 #!/bin/bash
 # Définir directement les variables d'environnement ici
-POSTGRES_USER=omar
-POSTGRES_PASSWORD=omar123
-POSTGRES_DB=django_db
+POSTGRES_USER=omar-test
+POSTGRES_PASSWORD=omar123-test
+POSTGRES_DB=django_db-test
 echo "POSTGRES_USER: $POSTGRES_USER"
 echo "POSTGRES_PASSWORD: $POSTGRES_PASSWORD"
 echo "POSTGRES_DB: $POSTGRES_DB"
