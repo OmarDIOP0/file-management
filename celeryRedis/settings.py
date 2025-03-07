@@ -175,6 +175,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# AUTH_USER_MODEL = 'authentication.User'
 #Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
