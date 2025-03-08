@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
 from .models import User, Student, Teacher, Profile
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 # Sérialiseur pour l'utilisateur
 class UserSerializer(serializers.ModelSerializer):
@@ -38,8 +39,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ['user', 'full_name', 'photo', 'bio', 'phone_number', 'location', 'birth_date']
 
 # Sérialiseur pour l'obtention du token JWT
-class MyTOPS(serializers.Serializer):
-    @staticmethod
+class MyTOPS(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        # Utilisez l'e-mail comme identifiant
+        attrs['email'] = attrs.get('email', attrs.get('username'))
+        return super().validate(attrs)
+    @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
         token['full_name'] = user.profile.full_name
