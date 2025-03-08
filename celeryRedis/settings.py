@@ -229,7 +229,7 @@ SIMPLE_JWT = {
 # Ajouter des configurations CORS pour autoriser uniquement certaines origines (à ajuster en fonction de vos besoins)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend en développement React
-    "localhost",  # URL de votre frontend en production
+    "https://localhost:8000",  # URL de votre frontend en production
 ]
 # Sécurisation de l'accès à l'API - Exemple de configuration CORS
 CORS_ALLOW_CREDENTIALS = True  # Autorise les cookies et l'authentification avec CORS
