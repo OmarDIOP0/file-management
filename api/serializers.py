@@ -1,38 +1,44 @@
-from rest_framework_simplejwt.tokens import Token
-from .models import User,Student,Teacher,Profile
-from django.contrib.auth.password_validation import validate_password
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
+from django.contrib.auth.password_validation import validate_password
 from rest_framework.validators import UniqueValidator
+from .models import User, Student, Teacher, Profile
 
+# Sérialiseur pour l'utilisateur
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     username = serializers.CharField(validators=[UniqueValidator(queryset=User.objects.all())])
+
     class Meta:
         model = User
         fields = ['id', 'email', 'username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
+# Sérialiseur pour l'étudiant
 class StudentSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+
     class Meta:
         model = Student
         fields = ['user']
 
+# Sérialiseur pour l'enseignant
 class TeacherSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+
     class Meta:
         model = Teacher
         fields = ['user', 'specialization', 'department']
 
-
+# Sérialiseur pour le profil utilisateur
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+
     class Meta:
         model = Profile
         fields = ['user', 'full_name', 'photo', 'bio', 'phone_number', 'location', 'birth_date']
 
-class MyTOPS(TokenObtainPairSerializer):
+# Sérialiseur pour l'obtention du token JWT
+class MyTOPS(serializers.Serializer):
     @staticmethod
     def get_token(cls, user):
         token = super().get_token(user)
@@ -44,10 +50,10 @@ class MyTOPS(TokenObtainPairSerializer):
         token['phone_number'] = user.profile.phone_number
         token['location'] = user.profile.location
         token['birth_date'] = user.profile.birth_date
-        token['role'] = 'Student' if hasattr(user,'student') else 'Teacher' if hasattr(user, 'teacher') else 'User'
+        token['role'] = 'Student' if hasattr(user, 'student') else 'Teacher' if hasattr(user, 'teacher') else 'User'
         return token
-    
 
+# Sérialiseur pour l'inscription
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField()
     username = serializers.CharField(max_length=255)
@@ -58,7 +64,7 @@ class RegisterSerializer(serializers.Serializer):
     def validate_password(self, value):
         validate_password(value)
         return value
-    
+
     def validate(self, data):
         """
         Vérifie si les mots de passe correspondent.
@@ -71,18 +77,12 @@ class RegisterSerializer(serializers.Serializer):
         """
         Crée l'utilisateur en fonction du rôle sélectionné (Student ou Teacher).
         """
-        # Enlever la confirmation du mot de passe des données validées
         validated_data.pop('confirm_password')
         user = User.objects.create_user(
             email=validated_data['email'],
             username=validated_data['username'],
-            password=validated_data['password']
+            password=validated_data['password'],
+            is_student=validated_data['role'] == 'Student',
+            is_teacher=validated_data['role'] == 'Teacher'
         )
-        role = validated_data['role']
-        if role == 'Student':
-            Student.objects.create(user=user)
-        elif role == 'Teacher':
-            Teacher.objects.create(user=user)
-
-        Profile.objects.create(user=user)
         return user

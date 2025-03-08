@@ -1,23 +1,24 @@
 from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated,AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import (MyTOPS,RegisterSerializer,UserSerializer,TeacherSerializer,StudentSerializer,RegisterSerializer)
-from .models import User, Student, Teacher,Profile
+from .serializers import MyTOPS, RegisterSerializer, UserSerializer, TeacherSerializer, StudentSerializer
+from .models import User, Student, Teacher, Profile
 
-# Create your views here.
+# Vue pour l'obtention du token JWT
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTOPS
-    
 
+# Vue pour l'inscription
 class RegisterView(APIView):
     permission_classes = [AllowAny]
+
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        #creer un utilisateur
+        # Créer un utilisateur
         user_data = serializer.validated_data
 
         try:
@@ -31,16 +32,6 @@ class RegisterView(APIView):
         except Exception as e:
             return Response({'error': str(e)}, status=400)
 
-        # Créer un profil pour l'utilisateur
-        profile = Profile.objects.create(user=user, full_name=user.username)
-        # En fonction du rôle, créer un profil Student ou Teacher
-        if user_data['role'] == 'Student':
-            Student.objects.create(user=user)
-        elif user_data['role'] == 'Teacher':
-            Teacher.objects.create(user=user)
-        # Créer un profil pour l'utilisateur
-        
-
         # Retourner une réponse de succès avec les données de l'utilisateur
         return Response({
             'status': 'User created successfully',
@@ -50,7 +41,8 @@ class RegisterView(APIView):
                 'role': user_data['role']
             }
         }, status=201)
-    
+
+# Vue pour récupérer le profil utilisateur
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]  # Seuls les utilisateurs authentifiés peuvent accéder
 
@@ -63,7 +55,7 @@ class UserProfileView(APIView):
             profile = user.profile  # On accède au profil lié à l'utilisateur
         except Profile.DoesNotExist:
             return Response({'error': 'Profile not found for this user.'}, status=404)
-        
+
         user_data = {
             'username': user.username,
             'email': user.email,
