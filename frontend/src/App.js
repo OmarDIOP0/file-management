@@ -1,11 +1,17 @@
-function App() {
-  return (
-    <div className="p-4 bg-blue-500 text-white">
-      <h1 className="text-2xl font-bold">Bienvenue dans mon projet React !</h1>
-      <p className="mt-2">Ceci est un exemple de texte stylisé avec Tailwind CSS.</p>
-      <button class="btn btn-neutral">Neutral</button>
-    </div>
-  );
-}
+import React from 'react'
+import {Routes, Route} from 'react-router-dom';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+import Dashboard from './pages/dashboard/Dashboard';
 
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path='*' element={<Login/>}/>
+    </Routes>
+  )
+}
 export default App;
