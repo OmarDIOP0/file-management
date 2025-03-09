@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import samaDocsImage from '../../assets/samaDocs.png'; // Assurez-vous que le chemin est correct
+import janguXayma from "../../assets/janguXayma.png";
 
 const Onboarding = () => {
   const phrases = [
@@ -17,7 +17,7 @@ const Onboarding = () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % phrases.length);
     }, 3000);
 
-    return () => clearInterval(interval); // Nettoyer l'intervalle
+    return () => clearInterval(interval); 
   }, [phrases.length]);
 
   return (
@@ -43,7 +43,7 @@ const Onboarding = () => {
               </svg>
             </div>
             <span className="space-x-1 text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              samaDocs
+            janguXayma
             </span>
             <ul
               tabIndex={0}
@@ -122,7 +122,7 @@ const Onboarding = () => {
             <div className="lg:w-2/3 space-y-6">
               <div className="relative space-y-6">
                 <h1 className="text-xl sm:text-sm md:text-2xl lg:text-3xl font-bold text-gray-800 leading-tight space-x-2">
-                  Simplifiez vos{' '}
+                  Simplifiez vos{'  '}
                   <span className="absolute bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent z-10">
                     {phrases[activeIndex]}
                   </span>
@@ -184,7 +184,7 @@ const Onboarding = () => {
             <div className="lg:w-1/3 flex justify-center">
               <div className="dashboard-preview w-full max-w-md md:max-w-lg lg:max-w-xl h-auto">
                 <img
-                  src={samaDocsImage}
+                  src={janguXayma}
                   alt="Dashboard Preview"
                   className="rounded-xl border-8 border-white/20 transform rotate-1 object-contain w-full h-full"
                 />
