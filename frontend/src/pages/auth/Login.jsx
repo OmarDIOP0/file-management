@@ -16,11 +16,10 @@ const Login = () => {
   // Mutation pour la connexion
   const loginMutation = useMutation({
     mutationFn: async (formData) => {
-      const response = await axios.post(`${APIURL}/auth/login/`, formData);
+      const response = await axios.post(`${APIURL}/token/`, formData);
       return response.data;
     },
     onSuccess: (data) => {
-      // Stockez le token ou les informations utilisateur dans le localStorage ou un état global
       localStorage.setItem('token', data.token); // Exemple de stockage du token
       alert('Connexion réussie !');
       navigate('/dashboard'); // Redirigez vers le tableau de bord après la connexion
