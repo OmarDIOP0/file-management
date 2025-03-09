@@ -22,7 +22,7 @@ const Login = () => {
     onSuccess: (data) => {
       localStorage.setItem('token', data.token); // Exemple de stockage du token
       alert('Connexion réussie !');
-      navigate('/dashboard'); // Redirigez vers le tableau de bord après la connexion
+      navigate('/dashboard'); 
     },
     onError: (error) => {
       alert(`Erreur lors de la connexion : ${error.message}`);

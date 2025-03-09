@@ -67,11 +67,13 @@ npm start
 ```
 ### Outils à installer
 ```sh
-npm install @tanstack/react-query axios react-router-dom
+npm install @tanstack/react-query axios react-router-dom sweetalert2 jwt-decode
 ```
 @tanstack/react-query : Pour la gestion des requêtes et la mise en cache des données.
 axios : Pour effectuer des requêtes HTTP.
 react-router-dom : Pour la gestion des routes dans une application React.
+sweetalert2 : Pour les notifications
+jwt-decode : Pour le token
 
 ---
 
