@@ -13,21 +13,23 @@ const Register = () => {
         confirmPassword:''
     });
     const navigate = useNavigate();
+    const { registerMutation } = useContext(AuthContext);
 
+    //Methode Register
     //Use Mutation for registration
-    const registerMutation = useMutation({
-        mutationFn: async (formData) => {
-            const response = await axios.post(`${APIURL}/auth/register/`,formData);
-            return response.data;
-        },
-        onSuccess: () => {
-            alert('Inscription réussie !');
-            navigate('/login');
-        },
-        onError: (error) => {
-            alert(`Erreur lors de l'inscription : ${error.message}`);
-        }
-    });
+    // const registerMutation = useMutation({
+    //     mutationFn: async (formData) => {
+    //         const response = await axios.post(`${APIURL}/auth/register/`,formData);
+    //         return response.data;
+    //     },
+    //     onSuccess: () => {
+    //         alert('Inscription réussie !');
+    //         navigate('/login');
+    //     },
+    //     onError: (error) => {
+    //         alert(`Erreur lors de l'inscription : ${error.message}`);
+    //     }
+    // });
 
     const handleSubmit  = (e) =>{
         e.preventDefault();

@@ -64,7 +64,7 @@ const Onboarding = () => {
                 </ul>
               </li>
               <li>
-                <a>Tableau de Bord</a>
+                <a>Dashboard</a>
               </li>
               <li>
                 <a>A Propos</a>
