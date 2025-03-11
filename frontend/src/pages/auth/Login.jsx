@@ -14,21 +14,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const { loginMutation } = useContext(AuthContext);
-  // Mutation pour la connexion
-//   const loginMutation = useMutation({
-//     mutationFn: async (formData) => {
-//       const response = await axios.post(`${APIURL}/token/`, formData);
-//       return response.data;
-//     },
-//     onSuccess: (data) => {
-//       localStorage.setItem('token', data.token); // Exemple de stockage du token
-//       alert('Connexion réussie !');
-//       navigate('/dashboard'); 
-//     },
-//     onError: (error) => {
-//       alert(`Erreur lors de la connexion : ${error.message}`);
-//     },
-//   });
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -48,8 +48,16 @@ export const AuthProvider = ({ children }) => {
       });
     },
     onError: (error) => {
+      let messageError = "Une erreur est survenue";
+      if(error.response && error.response.data){
+        if(typeof error.response.data === "string"){
+          messageError = error.response.data;
+        }else if(typeof error.response.data === "object"){
+          messageError = Object.values(error.response.data).flat().join("\n");
+        }
+      }
       swal.fire({
-        title: `Email ou Password incorrect❌ ${error}`,
+        title: `Erreur lors de la connexion❌ ${messageError}`,
         icon: "error",
         toast: true,
         timer: 6000,

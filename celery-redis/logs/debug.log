@@ -10111,3 +10111,26 @@ Traceback (most recent call last):
 django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'api.urls' from '/app/api/urls.py'> (None:None) 'api/'>
 WARNING 2025-03-11 19:05:43,132 log Not Found: /static/rest_framework/js/load-ajax-form.js
 WARNING 2025-03-11 19:06:57,579 log Bad Request: /api/register/
+DEBUG 2025-03-11 19:49:06,148 utils (0.077) SELECT "api_user"."password", "api_user"."last_login", "api_user"."is_superuser", "api_user"."first_name", "api_user"."last_name", "api_user"."is_staff", "api_user"."is_active", "api_user"."date_joined", "api_user"."id", "api_user"."username", "api_user"."email", "api_user"."created_at", "api_user"."updated_at", "api_user"."is_student", "api_user"."is_teacher" FROM "api_user" WHERE "api_user"."email" = 'fatou@gmail.com' LIMIT 21; args=('fatou@gmail.com',); alias=default
+WARNING 2025-03-11 19:49:07,078 log Unauthorized: /api/token/
+WARNING 2025-03-11 19:49:41,506 log Bad Request: /api/register/
+WARNING 2025-03-11 19:53:50,236 log Bad Request: /api/register/
+WARNING 2025-03-11 20:01:14,406 log Bad Request: /api/register/
+WARNING 2025-03-11 20:04:19,848 log Bad Request: /api/register/
+WARNING 2025-03-11 20:05:54,228 log Bad Request: /api/register/
+WARNING 2025-03-11 20:06:02,995 log Bad Request: /api/register/
+WARNING 2025-03-11 20:07:03,952 log Bad Request: /api/register/
+WARNING 2025-03-11 20:07:15,636 log Bad Request: /api/register/
+WARNING 2025-03-11 20:12:43,788 log Bad Request: /api/register/
+WARNING 2025-03-11 20:12:55,279 log Bad Request: /api/register/
+WARNING 2025-03-11 20:14:01,701 log Bad Request: /api/register/
+WARNING 2025-03-11 20:15:15,990 log Bad Request: /api/register/
+WARNING 2025-03-11 20:18:48,407 log Bad Request: /api/register/
+WARNING 2025-03-11 20:18:49,772 log Bad Request: /api/register/
+WARNING 2025-03-11 20:19:16,023 log Bad Request: /api/register/
+WARNING 2025-03-11 20:19:17,190 log Bad Request: /api/register/
+WARNING 2025-03-11 20:19:50,783 log Bad Request: /api/register/
+WARNING 2025-03-11 20:20:14,566 log Bad Request: /api/register/
+DEBUG 2025-03-11 20:20:24,839 utils (0.139) INSERT INTO "api_user" ("password", "last_login", "is_superuser", "first_name", "last_name", "is_staff", "is_active", "date_joined", "id", "username", "email", "created_at", "updated_at", "is_student", "is_teacher") VALUES ('pbkdf2_sha256$870000$7xlPgnXA10jFBMyGa6V4Lw$LCowBVIoaBgkyc9MxduDbT+g25zWuwgsSgOhOdD2QwQ=', NULL, false, '', '', false, true, '2025-03-11T20:20:23.221714+00:00'::timestamptz, 'f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'::uuid, 'user1', 'user1@gmail.com', '2025-03-11T20:20:24.689346+00:00'::timestamptz, '2025-03-11T20:20:24.689392+00:00'::timestamptz, true, false); args=('pbkdf2_sha256$870000$7xlPgnXA10jFBMyGa6V4Lw$LCowBVIoaBgkyc9MxduDbT+g25zWuwgsSgOhOdD2QwQ=', None, False, '', '', False, True, datetime.datetime(2025, 3, 11, 20, 20, 23, 221714, tzinfo=datetime.timezone.utc), UUID('f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'), 'user1', 'user1@gmail.com', datetime.datetime(2025, 3, 11, 20, 20, 24, 689346, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 3, 11, 20, 20, 24, 689392, tzinfo=datetime.timezone.utc), True, False); alias=default
+DEBUG 2025-03-11 20:20:25,022 utils (0.099) INSERT INTO "api_profile" ("user_id", "full_name", "photo", "bio", "phone_number", "location", "birth_date") VALUES ('f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'::uuid, '', '', NULL, NULL, NULL, NULL) RETURNING "api_profile"."id"; args=(UUID('f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'), '', '', None, None, None, None); alias=default
+DEBUG 2025-03-11 20:20:25,040 utils (0.012) INSERT INTO "api_student" ("user_id") VALUES ('f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'::uuid) RETURNING "api_student"."id"; args=(UUID('f59dbb00-422b-4440-b7c5-f6d5ff9e6f67'),); alias=default
