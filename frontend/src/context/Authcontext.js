@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import swal from "sweetalert2";
+import APIURL from '../utils/apiurl';
 
 const AuthContext = createContext();
 
@@ -35,9 +36,9 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwtDecode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      navigate("/");
+      navigate("/dashboard");
       swal.fire({
-        title: "Login Success",
+        title: "Login Success🚀✅",
         icon: "success",
         toast: true,
         timer: 6000,
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     },
     onError: (error) => {
       swal.fire({
-        title: "Email - Password does not exist",
+        title: "Email ou Password incorrect❌",
         icon: "error",
         toast: true,
         timer: 6000,
@@ -61,20 +62,19 @@ export const AuthProvider = ({ children }) => {
 
   // Mutation pour l'inscription
   const registerMutation = useMutation({
-    mutationFn: async ({ full_name, email, username, password, password2 }) => {
+    mutationFn: async ({ username,email, password, confirm_password }) => {
       const response = await axios.post(`${APIURL}/register/`, {
-        full_name,
         email,
         username,
         password,
-        password2,
+        confirm_password,
       });
       return response.data;
     },
     onSuccess: () => {
       navigate("/login");
       swal.fire({
-        title: "Registration Success",
+        title: "Registration Success🚀",
         icon: "success",
         toast: true,
         timer: 6000,
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("authTokens");
     navigate("/login");
     swal.fire({
-      title: "You have been logged out",
+      title: "You have been logged out🫡",
       icon: "success",
       toast: true,
       timer: 6000,
