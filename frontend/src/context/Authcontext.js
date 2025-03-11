@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     },
     onError: (error) => {
       swal.fire({
-        title: "Email ou Password incorrect❌",
+        title: `Email ou Password incorrect❌ ${error}`,
         icon: "error",
         toast: true,
         timer: 6000,
@@ -62,10 +62,11 @@ export const AuthProvider = ({ children }) => {
 
   // Mutation pour l'inscription
   const registerMutation = useMutation({
-    mutationFn: async ({ username,email, password, confirm_password }) => {
+    mutationFn: async ({ username,email,role, password, confirm_password }) => {
       const response = await axios.post(`${APIURL}/register/`, {
         email,
         username,
+        role,
         password,
         confirm_password,
       });
@@ -84,8 +85,16 @@ export const AuthProvider = ({ children }) => {
       });
     },
     onError: (error) => {
+      let messageError = "Une erreur est survenue";
+      if(error.response && error.response.data){
+        if(typeof error.response.data === "string"){
+          messageError = error.response.data;
+        }else if(typeof error.response.data === "object"){
+          messageError = Object.values(error.response.data).flat().join("\n");
+        }
+      }
       swal.fire({
-        title: error.response.data + " STATUS_CODE : " + error.response.status,
+        title: `Erreur lors de l'inscription❌ ${messageError}`,
         icon: "error",
         toast: true,
         timer: 6000,

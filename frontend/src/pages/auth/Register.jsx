@@ -10,6 +10,7 @@ const Register = () => {
     const [formData,setFormDate] = useState({
         username:'',
         email:'',
+        role:'',
         password:'',
         confirm_password:''
     });
@@ -19,6 +20,7 @@ const Register = () => {
 
     const handleSubmit  = (e) =>{
         e.preventDefault();
+        console.log("Données envoyées :", formData);
         registerMutation.mutate(formData);
     }
     
@@ -90,7 +92,30 @@ const Register = () => {
                     />
                   </label>
                 </div>
-    
+                {/* Champ Rôle */}
+                <div>
+                  <label className="w-full input input-bordered input-info flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      className="h-4 w-4 opacity-70"
+                    >
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+                    </svg>
+                    <select
+                      name="role"
+                      className="grow bg-transparent focus:outline-none"
+                      value={formData.role}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="" disabled>Choisissez un rôle</option>
+                      <option value="Student">Student</option>
+                      <option value="Teacher">Teacher</option>
+                    </select>
+                  </label>
+                </div>
                 {/* Champ Mot de passe */}
                 <div>
                   <label className="w-full input input-bordered input-primary flex items-center gap-2">
