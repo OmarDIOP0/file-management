@@ -1,8 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import APIURL from '../../utils/apiurl';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../context/Authcontext';
 
 
@@ -12,7 +9,6 @@ const Login = () => {
     password: '',
   });
 
-  const navigate = useNavigate();
   const { loginMutation } = useContext(AuthContext);
 
   const handleSubmit = (e) => {

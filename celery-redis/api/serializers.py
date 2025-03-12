@@ -50,12 +50,12 @@ class MyTOPS(TokenObtainPairSerializer):
         token['full_name'] = user.profile.full_name
         token['username'] = user.username
         token['email'] = user.email
-        token['photo'] = user.profile.photo
+        # token['photo'] = user.profile.photo
         token['bio'] = user.profile.bio
         token['phone_number'] = user.profile.phone_number
         token['location'] = user.profile.location
         token['birth_date'] = user.profile.birth_date
-        token['role'] = 'Student' if hasattr(user, 'student') else 'Teacher' if hasattr(user, 'teacher') else 'User'
+        token['role'] = 'student' if user.is_student else 'teacher' if user.is_teacher else 'user'
         return token
 
 # Sérialiseur pour l'inscription
