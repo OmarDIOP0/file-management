@@ -10905,3 +10905,101 @@ DEBUG 2025-03-11 22:05:31,222 utils (0.001) SELECT "auth_permission"."content_ty
 DEBUG 2025-03-11 22:05:31,224 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'authtoken'; args=('authtoken',); alias=default
 DEBUG 2025-03-11 22:05:31,227 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
 DEBUG 2025-03-11 22:05:31,231 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
+DEBUG 2025-03-11 22:05:40,283 utils (0.019) SELECT "api_user"."password", "api_user"."last_login", "api_user"."is_superuser", "api_user"."first_name", "api_user"."last_name", "api_user"."is_staff", "api_user"."is_active", "api_user"."date_joined", "api_user"."id", "api_user"."username", "api_user"."email", "api_user"."created_at", "api_user"."updated_at", "api_user"."is_student", "api_user"."is_teacher" FROM "api_user" WHERE "api_user"."email" = 'user2@gmail.com' LIMIT 21; args=('user2@gmail.com',); alias=default
+DEBUG 2025-03-11 22:05:42,034 utils (0.209) SELECT "api_profile"."id", "api_profile"."user_id", "api_profile"."full_name", "api_profile"."photo", "api_profile"."bio", "api_profile"."phone_number", "api_profile"."location", "api_profile"."birth_date" FROM "api_profile" WHERE "api_profile"."user_id" = 'f8bf72ae-c4e0-4182-a7bf-2919088c6706'::uuid LIMIT 21; args=(UUID('f8bf72ae-c4e0-4182-a7bf-2919088c6706'),); alias=default
+DEBUG 2025-03-12 23:41:38,291 utils (0.030) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-03-12 23:41:38,298 utils (0.003) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-12 23:41:40,115 utils (0.005) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-03-12 23:41:40,121 utils (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-12 23:41:40,124 utils (0.002) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-03-12 23:41:40,126 utils (0.001) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-12 23:41:40,183 utils (0.001) 
+            SELECT
+                c.relname,
+                CASE
+                    WHEN c.relispartition THEN 'p'
+                    WHEN c.relkind IN ('m', 'v') THEN 'v'
+                    ELSE 't'
+                END,
+                obj_description(c.oid, 'pg_class')
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('f', 'm', 'p', 'r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid)
+        ; args=None; alias=default
+DEBUG 2025-03-12 23:41:40,185 utils (0.000) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
+DEBUG 2025-03-12 23:41:40,191 utils (0.005) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+DEBUG 2025-03-12 23:41:40,193 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'admin' AND "django_content_type"."model" IN ('logentry')); args=('admin', 'logentry'); alias=default
+DEBUG 2025-03-12 23:41:40,201 utils (0.004) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,); alias=default
+DEBUG 2025-03-12 23:41:40,204 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',); alias=default
+DEBUG 2025-03-12 23:41:40,205 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+DEBUG 2025-03-12 23:41:40,207 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" IN ('group', 'permission')); args=('auth', 'group', 'permission'); alias=default
+DEBUG 2025-03-12 23:41:40,212 utils (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3); alias=default
+DEBUG 2025-03-12 23:41:40,216 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',); alias=default
+DEBUG 2025-03-12 23:41:40,219 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+DEBUG 2025-03-12 23:41:40,222 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'contenttypes' AND "django_content_type"."model" IN ('contenttype')); args=('contenttypes', 'contenttype'); alias=default
+DEBUG 2025-03-12 23:41:40,225 utils (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,); alias=default
+DEBUG 2025-03-12 23:41:40,227 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',); alias=default
+DEBUG 2025-03-12 23:41:40,229 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+DEBUG 2025-03-12 23:41:40,231 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sessions' AND "django_content_type"."model" IN ('session')); args=('sessions', 'session'); alias=default
+DEBUG 2025-03-12 23:41:40,234 utils (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,); alias=default
+DEBUG 2025-03-12 23:41:40,236 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',); alias=default
+DEBUG 2025-03-12 23:41:40,238 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'api'; args=('api',); alias=default
+DEBUG 2025-03-12 23:41:40,241 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'api' AND "django_content_type"."model" IN ('teacher', 'student', 'profile', 'user')); args=('api', 'teacher', 'student', 'profile', 'user'); alias=default
+DEBUG 2025-03-12 23:41:40,246 utils (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8, 9, 10, 7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8, 9, 10, 7); alias=default
+DEBUG 2025-03-12 23:41:40,248 utils (0.001) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'api'; args=('api',); alias=default
+DEBUG 2025-03-12 23:41:40,249 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'authtoken'; args=('authtoken',); alias=default
+DEBUG 2025-03-12 23:41:40,251 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'authtoken' AND "django_content_type"."model" IN ('tokenproxy', 'token')); args=('authtoken', 'tokenproxy', 'token'); alias=default
+DEBUG 2025-03-12 23:41:40,253 utils (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (11, 12) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(11, 12); alias=default
+DEBUG 2025-03-12 23:41:40,255 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'authtoken'; args=('authtoken',); alias=default
+DEBUG 2025-03-12 23:41:40,257 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
+DEBUG 2025-03-12 23:41:40,259 utils (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework_simplejwt'; args=('rest_framework_simplejwt',); alias=default
+WARNING 2025-03-12 23:42:05,779 log Bad Request: /api/register/
+DEBUG 2025-03-12 23:42:12,467 utils (0.013) INSERT INTO "api_user" ("password", "last_login", "is_superuser", "first_name", "last_name", "is_staff", "is_active", "date_joined", "id", "username", "email", "created_at", "updated_at", "is_student", "is_teacher") VALUES ('pbkdf2_sha256$870000$rv4VRPbShrHZg0VsWoxRcA$cHNU9qvm8VTQFXkZ786eqKYMMYSduu1z/1IPqQpYg7Q=', NULL, false, '', '', false, true, '2025-03-12T23:42:11.845424+00:00'::timestamptz, '7a1f8a11-ad37-4986-9bd5-2c46883b6395'::uuid, 'user3', 'user3@gmail.com', '2025-03-12T23:42:12.453520+00:00'::timestamptz, '2025-03-12T23:42:12.453535+00:00'::timestamptz, true, false); args=('pbkdf2_sha256$870000$rv4VRPbShrHZg0VsWoxRcA$cHNU9qvm8VTQFXkZ786eqKYMMYSduu1z/1IPqQpYg7Q=', None, False, '', '', False, True, datetime.datetime(2025, 3, 12, 23, 42, 11, 845424, tzinfo=datetime.timezone.utc), UUID('7a1f8a11-ad37-4986-9bd5-2c46883b6395'), 'user3', 'user3@gmail.com', datetime.datetime(2025, 3, 12, 23, 42, 12, 453520, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 3, 12, 23, 42, 12, 453535, tzinfo=datetime.timezone.utc), True, False); alias=default
+DEBUG 2025-03-12 23:42:12,482 utils (0.014) INSERT INTO "api_profile" ("user_id", "full_name", "photo", "bio", "phone_number", "location", "birth_date") VALUES ('7a1f8a11-ad37-4986-9bd5-2c46883b6395'::uuid, '', '', NULL, NULL, NULL, NULL) RETURNING "api_profile"."id"; args=(UUID('7a1f8a11-ad37-4986-9bd5-2c46883b6395'), '', '', None, None, None, None); alias=default
+DEBUG 2025-03-12 23:42:12,490 utils (0.006) INSERT INTO "api_student" ("user_id") VALUES ('7a1f8a11-ad37-4986-9bd5-2c46883b6395'::uuid) RETURNING "api_student"."id"; args=(UUID('7a1f8a11-ad37-4986-9bd5-2c46883b6395'),); alias=default
+DEBUG 2025-03-12 23:42:37,748 utils (0.006) SELECT "api_user"."password", "api_user"."last_login", "api_user"."is_superuser", "api_user"."first_name", "api_user"."last_name", "api_user"."is_staff", "api_user"."is_active", "api_user"."date_joined", "api_user"."id", "api_user"."username", "api_user"."email", "api_user"."created_at", "api_user"."updated_at", "api_user"."is_student", "api_user"."is_teacher" FROM "api_user" WHERE "api_user"."email" = 'user3@gmail.com' LIMIT 21; args=('user3@gmail.com',); alias=default
+DEBUG 2025-03-12 23:42:38,539 utils (0.002) SELECT "api_profile"."id", "api_profile"."user_id", "api_profile"."full_name", "api_profile"."photo", "api_profile"."bio", "api_profile"."phone_number", "api_profile"."location", "api_profile"."birth_date" FROM "api_profile" WHERE "api_profile"."user_id" = '7a1f8a11-ad37-4986-9bd5-2c46883b6395'::uuid LIMIT 21; args=(UUID('7a1f8a11-ad37-4986-9bd5-2c46883b6395'),); alias=default

@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -230,9 +230,9 @@ SIMPLE_JWT = {
 # Ajouter des configurations CORS pour autoriser uniquement certaines origines (à ajuster en fonction de vos besoins)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend en développement React
-    "https://localhost:8000",  # URL de votre frontend en production
+    "http://localhost:8000",  # URL de votre frontend en production
 ]
-# Sécurisation de l'accès à l'API - Exemple de configuration CORS
+# Sécurisation de l'accès à l'API 
 CORS_ALLOW_CREDENTIALS = True  # Autorise les cookies et l'authentification avec CORS
 CORS_ORIGIN_ALLOW_ALL = False  # Ne pas autoriser toutes les origines
 
