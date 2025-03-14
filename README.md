@@ -20,7 +20,7 @@ Notelma AI est une plateforme intelligente permettant aux étudiants d'uploader 
 ### DevOps & Déploiement :
 - **Docker** - Conteneurisation
 - **Amazon EC2** - Hébergement
-- **NGINX** - Serveur proxy
+- **Gunicorn** - Serveur 
 
 ---
 
