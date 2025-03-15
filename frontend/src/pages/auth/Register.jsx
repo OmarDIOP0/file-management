@@ -1,8 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {useMutation} from '@tanstack/react-query';
-import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
-import APIURL from '../../utils/apiurl';
 import janguXayma from "../../assets/janguXayma.png";
 import AuthContext from '../../context/Authcontext';
 

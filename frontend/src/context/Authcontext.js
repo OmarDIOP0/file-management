@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
     onSuccess: (data) => {
       setAuthTokens(data);
       setUser(jwtDecode(data.access));
-      const decodedUser = jwtDecode(data.access);
       localStorage.setItem("authTokens", JSON.stringify(data));
       navigate("/dashboard");
       swal.fire({
